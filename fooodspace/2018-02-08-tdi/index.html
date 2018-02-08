@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Bokeh -->
+    <link href="https://cdn.pydata.org/bokeh/release/bokeh-0.12.10.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.10.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.pydata.org/bokeh/release/bokeh-tables-0.12.10.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.pydata.org/bokeh/release/bokeh-0.12.10.min.js"></script>
+    <script src="https://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.10.min.js"></script>
+    <script src="https://cdn.pydata.org/bokeh/release/bokeh-tables-0.12.10.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Foood Space</title>
+  </head>
+  <body>
+
+    <!-- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"> -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+      <a class="navbar-brand" href="#">Foood Space</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#restaurant-data">Data</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Insights</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#rating-value">Ratings</a>
+              <a class="dropdown-item" href="#price-pivot">Price pivot</a>
+              <a class="dropdown-item" href="#avenue-premium">Avenue premium</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#model">Model</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#restaurant-utility">Utility</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Foood Space</h1>
+          <p>Using open data to identify the drivers of success in New York City restaurants.</p>
+        </div>
+      </div>
+
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Informing restaurant business strategy</h2>
+            <p>
+              Opening a restaurant in New York City involves making a
+              number of choices that directly influence the chance of
+              success: cuisine, location, menu price, and online
+              presence among others.
+            </p>
+            <p>We utilize various <a href="https://www.yelp.com/">sources</a> of <a href="https://www.zomato.com/">open</a>
+              <a href="http://www.nyc.gov/health">data</a> to predict
+              the impact these choices have on restaurant revenue.
+            </p>
+            <p><a class="btn btn-secondary" href="#restaurant-data" role="button">NYC restaurant data &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Data-driven insights</h2>
+            <p>
+              Predicting restaurant success using data on existing NYC
+              restaurants yields actionable insights for restaurant
+              owners and entrepreneurs:
+            </p>
+            <ul>
+              <li><a href="#rating-value">Star rating value</a> changes dramatically after three
+                stars</li>
+              <li>The impact of <a href="#price-pivot">menu price</a> varies with cuisine</li>
+              <li><a href="#avenue-premium">Street locations</a> could be more valuable than avenues</li>
+            </ul>
+            <p><a class="btn btn-secondary" href="#rating-value" role="button">Insights &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Tools for restaurateurs</h2>
+            <p>
+              We develop an estimate for revenue and fit the data to
+              an <a href="#model">ensemble model</a> that incorporates ridge
+              regression and random forests to inform our predictions.
+              To help restaurateurs zero in on the right combination
+              of characteristics for their establishment, we provide a
+              <a href="#restaurant-utility">recommender system-based utility</a>.
+            </p>
+            <p><a class="btn btn-secondary" href="#model" role="button">Model + utility &raquo;</a></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="section" id="restaurant-data">NYC restaurant data</h2>
+            <p>We take location and attribute data for over 7,900 New York City restaurants.</p>
+            <div class="bk-root">
+              <div class="bk-plotdiv" id="ec376c0f-3575-438e-bc26-7f41ea9b38b2"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="section" id="rating-value">Revenue-value of a rating star</h2>
+            <p>While more stars in a review tend to suggest a superior dining experience, our revenue model suggests that the dollar-value of an additional star becomes meaningful only after three stars.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <figure class="figure text-center">
+              <img class="img-fluid img-thumbnail rounded" src="images/plot_star_rating.png" alt="Revenue-value of a rating star." />
+              <figcaption class="figure-caption">
+                <strong>Impact of star ratings on predicted revenue.</strong> Predictions
+                are conditioned on Italian restaurants in Hell's
+                Kitchen.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="section" id="price-pivot">Pivoting on price</h2>
+            <p>
+              While sliding up the menu price scale generally
+              correlates with higher revenue proxy value, the marginal
+              impact of moving up a price tier varies considerably by
+              cuisines served.
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <figure class="figure text-center">
+              <img class="img-fluid img-thumbnail rounded" src="images/plot_culinary_pivot.png" alt="On- vs. off-avenue locations." />
+              <figcaption class="figure-caption">
+                <strong>Impact of sliding along the price scale on predicted revenue.</strong> Predictions
+                are conditioned on a median-latitude location in
+                Hell's Kitchen.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="section" id="avenue-premium">On- vs. off-avenue locations</h2>
+            <p>
+              On-avenue restaurant locations provide exposure to
+              transit patterns that significantly differ from those of
+              off-avenue locations. While avenues tend to be busier
+              than streets, our revenue model suggests that off-avenue
+              locations tend to demand a premium in many
+              neighborhoods.
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <figure class="figure text-center">
+              <img class="img-fluid img-thumbnail rounded" src="images/plot_avenue_premium.png" alt="On- vs. off-avenue locations." />
+              <figcaption class="figure-caption">
+                <strong>Impact of on- vs. off-avenue location on predicted revenue.</strong> Predictions
+                are conditioned on three-dollar sign restaurants
+                serving Italian food.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="section" id="model">Revenue model</h2>
+            <p>
+              We proxy revenue using the product of the number of
+              reviews a restaurant has received and the restaurant's
+              average meal price for two. We fit a number of features
+              including cuisine, location, and price tier on the
+              revenue proxy, using an ensemble model that first
+              applies ridge regression and then models the residuals
+              using a random forest.
+            </p>
+            <p>
+              Our model achieves <strong>80% precision</strong> and <strong>97% recall</strong> for
+              restaurants with above-median revenue proxy values, with
+              an R-squared of 0.91.
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="section">Two-level prediction quality</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <figure class="figure text-center">
+              <img class="img-fluid img-thumbnail rounded" src="images/confusion-matrix-2.svg" alt="Two-way confusion matrix" />
+              <figcaption class="figure-caption">
+                <strong>Prediction quality over two levels.</strong> Predictions
+                for above-median revenue proxy values yield 80%
+                precision and 97% recall.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <pre>
+             precision    recall  f1-score   support
+
+         H1       0.97      0.76      0.85      3966
+         H2       0.80      0.97      0.88      3965
+
+avg / total       0.89      0.87      0.87      7931
+            </pre>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="section">Four-level prediction quality</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <figure class="figure text-center">
+              <img class="img-fluid img-thumbnail rounded" src="images/confusion-matrix-4.svg" alt="Four-way confusion matrix" />
+              <figcaption class="figure-caption">
+                <strong>Prediction quality over four levels.</strong> Predictions
+                for top-quartile revenue proxy values yield 79%
+                precision and 93% recall.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <pre>
+             precision    recall  f1-score   support
+
+         Q1       0.89      0.53      0.67      1988
+         Q2       0.56      0.55      0.55      1978
+         Q3       0.60      0.74      0.66      1984
+         Q4       0.79      0.93      0.86      1981
+
+avg / total       0.71      0.69      0.68      7931
+            </pre>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="section">Model predictions vs. observations</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <figure class="figure text-center">
+              <img class="img-fluid img-thumbnail rounded" src="images/plot_predictions.png" alt="Predicted revenue." />
+              <figcaption class="figure-caption"><strong>Predicted revenue vs. proxy revenue.</strong></figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="section" id="restaurant-utility">Restaurant recommender system</h2>
+            <p>A higher <code>Fit</code> is better.</p>
+            <iframe src="https://fooodspace.herokuapp.com/"></iframe>
+          </div>
+        </div>
+
+        <hr />
+
+      </div> <!-- /container -->
+
+    </main>
+
+    <footer class="container">
+      <p>Copyright &copy; 2018 <a href="mail:alan.parkerlue@gmail.com">Alan Parker Lue</a>.</p>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <script src="restaurant_plot.js"></script>
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
