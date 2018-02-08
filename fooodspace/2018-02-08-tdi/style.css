@@ -20,15 +20,31 @@ body, .section {
     margin: 0 auto;
 }
 
-th {
-    text-align: center;
+table.legend {
+    margin: 0 auto;
 }
 
-td {
-    border: solid black 1px;
-    padding: 1em;
-    text-align: right;
-    font-size: 2em;
+td.legend-color {
+    width: 25px;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+td.legend-text {
+    width: 120px;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    margin-left: 0.25em;
+}
+
+.legend-color span {
+    padding: 0.5em 1em;
+}
+
+.legend-text {
+    font-size: 0.8em;
 }
 
 iframe {
