@@ -3,6 +3,10 @@
     padding-top: 3.5rem;
 }
 
+.subsection {
+    padding-top: 1.5rem;
+}
+
 .bg-dark-alpha {
     background-color: rgba(52, 58, 64, 0.8);
 }
@@ -61,11 +65,23 @@ td.legend-text {
     font-size: 0.9em;
 }
 
+.five-n-summary {
+    margin: 0 auto;
+}
+
+.five-n-summary thead tr{
+    border-bottom: solid black 1px;
+}
+
+.five-n-summary td, .five-n-summary th {
+    width: 5em;
+}
+
 iframe {
     display: block;
     border: 0;
     margin: 0 auto;
-    width: 800px;
+    width: 850px;
     height: 1050px;
 }
 

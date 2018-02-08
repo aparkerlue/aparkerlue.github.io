@@ -142,51 +142,83 @@
 
         <div class="row">
           <div class="col-md-10 offset-md-1">
-            <h2 class="section" id="model">Revenue model</h2>
+            <h2 class="section" id="model">Restaurant revenue model</h2>
             <p>
-              We proxy revenue using the product of the number of
-              reviews a restaurant has received and the restaurant's
-              average meal price for two. We fit a number of features
-              including cuisine, location, and price tier on the
-              revenue proxy, using an ensemble model that first
-              applies ridge regression and then models the residuals
-              using a random forest.
+              We use restaurant features—including average rating,
+              cuisines served, latitude, longitude, menu price, and
+              opening hours—to predict a restaurant's revenues. To
+              develop a proxy for revenues, we multiply (1) the number
+              of reviews a restaurant has received by (2) the average
+              price of a meal at that restaurant. 
             </p>
             <p>
-              Our model achieves <strong>80% precision</strong> and <strong>97% recall</strong> for
-              restaurants with above-median revenue proxy values, with
-              an R-squared of 0.91.
-            </p>
+              The model takes an <a href="https://en.wikipedia.org/wiki/Ensemble_learning" target="#">ensemble learning</a>
+              approach by first fitting the linear relationships using <a href="https://en.wikipedia.org/wiki/Tikhonov_regularization" target="#">ridge regression</a> and
+              then modeling the residuals using a <a href="https://en.wikipedia.org/wiki/Random_forest" target="#">random forest</a>.
+              We use five-fold cross-validation to tune the ensemble
+              model hyperparameters to ridge \(\alpha\) of 0.037, a
+              forest of 200 decision trees, and 20 features per tree.
+            </ul>
           </div>
           <div class="col-md-8 offset-md-2">
             <figure class="figure text-center">
               <img class="img-fluid img-thumbnail rounded" src="images/plot_predictions.png" alt="Predicted revenue." />
-              <figcaption class="figure-caption"><strong>Predicted revenue vs. proxy revenue.</strong></figcaption>
+              <table class="five-n-summary">
+                <thead>
+                  <tr><th>Min.</th><th>1st qu.</th><th>Median</th><th>Mean</th><th>3rd Qu.</th><th>Max</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>10</td><td>700</td><td>2,600</td><td>7,021</td><td>7,200</td><td>269,900</td></tr>
+                </tbody>
+              </table>
+              <figcaption class="figure-caption">
+                <strong>Predicted revenue proxy vs. observed revenue proxy.</strong> The
+                observed revenue proxy is calculated as the product of
+                the number of reviews a restaurant has received and
+                the average price of a meal at that restaurant. The
+                unit of proxy revenue is review-dollars.
+              </figcaption>
             </figure>
           </div>
           <div class="col-md-10 offset-md-1">
-            <h3>Two-level prediction quality</h3>
+            <p>When trained on the full data set, the model achieves:</p>
+            <ul>
+              <li><a href="https://en.wikipedia.org/wiki/Root-mean-square_deviation" target="#">RMSE</a> of 4,601 review-dollars</li>
+              <li><a href="https://en.wikipedia.org/wiki/Mean_absolute_error" target="#">Mean absolute error</a> of 2,043 review-dollars</li>
+              <li><a href="https://en.wikipedia.org/wiki/Coefficient_of_determination" target="#">\(R^2\)</a> of 0.91</li>
+            </ul>
+          </div>
+          <div class="col-md-10 offset-md-1">
+            <h3 class="subsection">Two-level prediction quality</h3>
+            <p>
+              The model achieves <strong>80% precision</strong> and <strong>97% recall</strong> for
+              restaurants with above-median proxy revenues.
+            </p>
           </div>
           <div class="col-md-8 offset-md-2">
             <figure class="figure text-center">
               <img class="img-fluid img-thumbnail rounded" src="images/confusion-matrix-2.svg" alt="Two-way confusion matrix" />
               <figcaption class="figure-caption">
                 <strong>Prediction quality over two levels.</strong> Predictions
-                for above-median revenue proxy values yield 80%
-                precision and 97% recall.
+                classified by upper- and lower- half of revenue proxy
+                values across 7,931 restaurants.
               </figcaption>
             </figure>
           </div>
           <div class="col-md-10 offset-md-1">
-            <h3>Four-level prediction quality</h3>
+            <h3 class="subsection">Four-level prediction quality</h3>
+            <p>
+              The model achieves <strong>79% precision</strong> and <strong>93% recall</strong> for
+              restaurants with top-quartile proxy revenues.
+            </p>
           </div>
           <div class="col-md-8 offset-md-2">
             <figure class="figure text-center">
               <img class="img-fluid img-thumbnail rounded" src="images/confusion-matrix-4.svg" alt="Four-way confusion matrix" />
               <figcaption class="figure-caption">
                 <strong>Prediction quality over four levels.</strong> Predictions
-                for top-quartile revenue proxy values yield 79%
-                precision and 93% recall.
+                classified by quartiles of revenue proxy values across
+                7,931 restaurants.
               </figcaption>
             </figure>
           </div>
@@ -198,7 +230,12 @@
         <div class="row">
           <div class="col-md-10 offset-md-1">
             <h2 class="section" id="rating-value">Revenue-value of a rating star</h2>
-            <p>While more stars in a review tend to suggest a superior dining experience, our revenue model suggests that the dollar-value of an additional star becomes meaningful only after three stars.</p>
+            <p>
+              While more stars in a review tend to suggest a superior
+              dining experience, the restaurant revenue model suggests
+              that the dollar-value of an additional star becomes
+              meaningful only after three stars.
+            </p>
           </div>
           <div class="col-md-8 offset-md-2">
             <figure class="figure text-center">
@@ -219,8 +256,8 @@
           <div class="col-md-10 offset-md-1">
             <h2 class="section" id="price-pivot">Pivoting on price</h2>
             <p>
-              While sliding up the menu price scale generally
-              correlates with higher revenue proxy value, the marginal
+              While sliding up the menu-price scale generally
+              correlates with higher proxy revenues, the marginal
               impact of moving up a price tier varies considerably by
               cuisines served.
             </p>
@@ -247,9 +284,8 @@
               On-avenue restaurant locations provide exposure to
               transit patterns that significantly differ from those of
               off-avenue locations. While avenues tend to be busier
-              than streets, our revenue model suggests that off-avenue
-              locations tend to demand a premium in many
-              neighborhoods.
+              than streets, the model suggests that off-avenue
+              locations could demand a premium in many neighborhoods.
             </p>
           </div>
           <div class="col-md-8 offset-md-2">
@@ -269,7 +305,7 @@
 
         <div class="row">
           <div class="col-md-10 offset-md-1">
-            <h2 class="section" id="restaurant-utility">Restaurant recommender system</h2>
+            <h2 class="section" id="restaurant-utility">Restaurant feature recommender prototype</h2>
             <p>
               The recommender utility summarizes the output of a model
               that uses <strong>tensor-matrix factorization</strong>
