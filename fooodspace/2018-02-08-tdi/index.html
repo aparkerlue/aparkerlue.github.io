@@ -14,6 +14,9 @@
      Bokeh.set_log_level("info");
     </script>
 
+    <!-- MathJax -->
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
     <link rel="stylesheet" href="style.css">
 
     <title>Foood Space</title>
@@ -267,7 +270,35 @@
         <div class="row">
           <div class="col-md-10 offset-md-1">
             <h2 class="section" id="restaurant-utility">Restaurant recommender system</h2>
-            <p>A higher <code>Fit</code> is better.</p>
+            <p>
+              The recommender utility summarizes the output of a model
+              that uses <strong>tensor-matrix factorization</strong>
+              to decompose a three-dimensional array of average
+              <em>restaurant scores</em>, indexed by cuisine,
+              location, and menu price. This approach allows for both
+              data compression and interpolation across missing
+              values.
+            </p>
+            <p>
+              The model decomposes the original three-dimensional
+              array into a small rank-3 tensor and three
+              low-dimensional matrices. The restaurant score is a real
+              number between 0 and 5 that is determined by the
+              function
+
+              \[ f(r, v; c) = r \left(1 - \frac{1}{cv + 1}\right), \]
+
+              where \(r\) is the restaurant's average rating on a
+              0-to-5 scale, \(v\) is the number of reviews (or votes)
+              a restaurant has received, and \(c\) is a parameter is
+              calibrated to allow restaurants with a median number of
+              reviews receive a score of \(f(r) = 0.5 r\).
+            </p>
+            <p>
+              In the table below, <code>Score</code> and <code>Fit</code> correspond
+              to the observed and estimated restaurant scores,
+              respectively. A higher <code>Fit</code> is better.
+            </p>
             <iframe src="https://fooodspace.herokuapp.com/"></iframe>
           </div>
         </div>
