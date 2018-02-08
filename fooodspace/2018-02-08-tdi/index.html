@@ -37,20 +37,16 @@
           <li class="nav-item">
             <a class="nav-link" href="#restaurant-data">Data</a>
           </li>
+          <li class="nav-item"><a class="nav-link" href="#model">Model</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Insights</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#rating-value">Ratings</a>
-              <a class="dropdown-item" href="#price-pivot">Price pivot</a>
+              <a class="dropdown-item" href="#rating-value">Review stars</a>
+              <a class="dropdown-item" href="#price-pivot">Price scale</a>
               <a class="dropdown-item" href="#avenue-premium">Avenue premium</a>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#model">Model</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#restaurant-utility">Utility</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="#restaurant-utility">Utility</a></li>
         </ul>
       </div>
     </nav>
@@ -63,23 +59,29 @@
           <div class="col">
             <div class="jumbotron">
               <h1 class="display-2">Foood Space</h1>
-              <p class="lead">Data-driven business strategy for restaurants in NYC.</p>
+              <p class="lead">
+                Using open data to identify the drivers of success for
+                New York City restaurants
+              </p>
               <hr class="mb-5">
               <div class="row">
                 <div class="col-md-6 col-lg-6">
-                  <h2>Tools for Restaurateurs</h2>
+                  <h2>Data-driven insights for restaurateurs</h2>
                   <p>
-                    The restaurant business is fraught with tough decisions. Foood Space analyzes multiple sources of open data so you can <strong>find out where the profit is</strong>:
+                    Opening a restaurant in NYC requires making
+                    choices that directly impact the chances of
+                    success—cuisine, location, menu price, and
+                    operating hours to name a few. A data science
+                    approach can help predict how these choices could
+                    impact your business:
                   </p>
                   <ul>
-                    <li><strong>Upscale French</strong>, or <strong>casual American?</strong></li>
-                    <li>A location on <strong>a street</strong>, or <strong>an avenue?</strong></li>
-                    <li>A <strong>one-star</strong> Yelp rating, or <strong>three-star?</strong></li>
+                    <li>Just how valuable are <strong>star ratings</strong>?</li>
+                    <li>What <strong>price level</strong> is best for my establishment?</li>
+                    <li>Am I better off on <strong>an avenue</strong> or <strong>a street</strong>?</li>
                   </ul>
-                  <p>
-                    <em>(Hint: It's not always what you think.)</em>
-                  </p>
-                  <p><a class="btn btn-success" href="#restaurant-data" role="button">Learn More &raquo;</a></p>
+                  <p>It isn't always what you think.</p>
+                  <p><a class="btn btn-success" href="#restaurant-data" role="button">Learn more &raquo;</a></p>
                 </div>
               </div>
             </div>
@@ -91,11 +93,18 @@
             <div class="container">
               <div class="row my-5">
                 <div class="col-lg-5 text-right" id="restaurant-data__text">
-                  <p class="lead">Harness data from</p>
-                  <p class="display-4">6,000+ Restaurants</p>
+                  <p class="lead">Based on data from</p>
+                  <p class="display-4">7,900+ Restaurants</p>
                   <p class="lead">throughout NYC.</p>
-                  <p>Your choices (of cuisine, location, pricing, online presence, and more) have a direct impact on your chance of success.</p>
-                  <p>Are you confident you're making the right ones?</p>
+                  <p>
+                    We source data via the <a href="https://www.yelp.com/fusion" target="#">Yelp Fusion API</a> and extract <a href="https://www.yelp.com/developers/documentation/v3/business" target="#">features</a> on
+                    7,931 restaurants across 141 cuisines and
+                    establishment types,
+                  </p>
+                  <p>
+                    focusing on restaurants in Manhattan that were
+                    active in early 2018.
+                  </p>
                 </div>
                 <div class="col-lg-7" id="restaurant-data__map">
                   <div class="bk-root">
@@ -153,11 +162,12 @@
             </p>
             <p>
               The model takes an <a href="https://en.wikipedia.org/wiki/Ensemble_learning" target="#">ensemble learning</a>
-              approach by first fitting the linear relationships using <a href="https://en.wikipedia.org/wiki/Tikhonov_regularization" target="#">ridge regression</a> and
+              approach by first fitting linear relationships using <a href="https://en.wikipedia.org/wiki/Tikhonov_regularization" target="#">ridge regression</a> and
               then modeling the residuals using a <a href="https://en.wikipedia.org/wiki/Random_forest" target="#">random forest</a>.
-              We use five-fold cross-validation to tune the ensemble
-              model hyperparameters to ridge \(\alpha\) of 0.037, a
-              forest of 200 decision trees, and 20 features per tree.
+              We use five-fold <a href="https://en.wikipedia.org/wiki/Cross-validation_(statistics)">cross-validation</a>
+              to tune the ensemble model hyperparameters to ridge
+              \(\alpha\) of 0.037, a forest of 200 decision trees, and
+              20 features per tree.
             </ul>
           </div>
           <div class="col-md-8 offset-md-2">
@@ -189,7 +199,7 @@
             </ul>
           </div>
           <div class="col-md-10 offset-md-1">
-            <h3 class="subsection">Two-level prediction quality</h3>
+            <h3 class="subsection">Prediction quality across two levels</h3>
             <p>
               The model achieves <strong>80% precision</strong> and <strong>97% recall</strong> for
               restaurants with above-median proxy revenues.
@@ -206,7 +216,7 @@
             </figure>
           </div>
           <div class="col-md-10 offset-md-1">
-            <h3 class="subsection">Four-level prediction quality</h3>
+            <h3 class="subsection">Prediction quality across four levels</h3>
             <p>
               The model achieves <strong>79% precision</strong> and <strong>93% recall</strong> for
               restaurants with top-quartile proxy revenues.
@@ -229,12 +239,13 @@
 
         <div class="row">
           <div class="col-md-10 offset-md-1">
-            <h2 class="section" id="rating-value">Revenue-value of a rating star</h2>
+            <h2 class="section" id="rating-value">Dollar-value of a rating star</h2>
             <p>
-              While more stars in a review tend to suggest a superior
+              While a review with more stars suggests a superior
               dining experience, the restaurant revenue model suggests
-              that the dollar-value of an additional star becomes
-              meaningful only after three stars.
+              that the dollar-value of an additional review star
+              becomes meaningful only after having already earned
+              three stars.
             </p>
           </div>
           <div class="col-md-8 offset-md-2">
@@ -305,7 +316,7 @@
 
         <div class="row">
           <div class="col-md-10 offset-md-1">
-            <h2 class="section" id="restaurant-utility">Restaurant feature recommender prototype</h2>
+            <h2 class="section" id="restaurant-utility">Restaurant feature recommender (<code>prototype</code>)</h2>
             <p>
               The recommender utility summarizes the output of a model
               that uses <strong>tensor-matrix factorization</strong>
