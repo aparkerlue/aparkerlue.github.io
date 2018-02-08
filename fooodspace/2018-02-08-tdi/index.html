@@ -139,6 +139,61 @@
 
         <div class="row">
           <div class="col-md-10 offset-md-1">
+            <h2 class="section" id="model">Revenue model</h2>
+            <p>
+              We proxy revenue using the product of the number of
+              reviews a restaurant has received and the restaurant's
+              average meal price for two. We fit a number of features
+              including cuisine, location, and price tier on the
+              revenue proxy, using an ensemble model that first
+              applies ridge regression and then models the residuals
+              using a random forest.
+            </p>
+            <p>
+              Our model achieves <strong>80% precision</strong> and <strong>97% recall</strong> for
+              restaurants with above-median revenue proxy values, with
+              an R-squared of 0.91.
+            </p>
+          </div>
+          <div class="col-md-8 offset-md-2">
+            <figure class="figure text-center">
+              <img class="img-fluid img-thumbnail rounded" src="images/plot_predictions.png" alt="Predicted revenue." />
+              <figcaption class="figure-caption"><strong>Predicted revenue vs. proxy revenue.</strong></figcaption>
+            </figure>
+          </div>
+          <div class="col-md-10 offset-md-1">
+            <h3>Two-level prediction quality</h3>
+          </div>
+          <div class="col-md-8 offset-md-2">
+            <figure class="figure text-center">
+              <img class="img-fluid img-thumbnail rounded" src="images/confusion-matrix-2.svg" alt="Two-way confusion matrix" />
+              <figcaption class="figure-caption">
+                <strong>Prediction quality over two levels.</strong> Predictions
+                for above-median revenue proxy values yield 80%
+                precision and 97% recall.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col-md-10 offset-md-1">
+            <h3>Four-level prediction quality</h3>
+          </div>
+          <div class="col-md-8 offset-md-2">
+            <figure class="figure text-center">
+              <img class="img-fluid img-thumbnail rounded" src="images/confusion-matrix-4.svg" alt="Four-way confusion matrix" />
+              <figcaption class="figure-caption">
+                <strong>Prediction quality over four levels.</strong> Predictions
+                for top-quartile revenue proxy values yield 79%
+                precision and 93% recall.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col-md-10 offset-md-1">
+            <hr class="mt-5" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
             <h2 class="section" id="rating-value">Revenue-value of a rating star</h2>
             <p>While more stars in a review tend to suggest a superior dining experience, our revenue model suggests that the dollar-value of an additional star becomes meaningful only after three stars.</p>
           </div>
@@ -201,61 +256,6 @@
                 <strong>Impact of on- vs. off-avenue location on predicted revenue.</strong> Predictions
                 are conditioned on three-dollar sign restaurants
                 serving Italian food.
-              </figcaption>
-            </figure>
-          </div>
-          <div class="col-md-10 offset-md-1">
-            <hr class="mt-5" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-10 offset-md-1">
-            <h2 class="section" id="model">Revenue model</h2>
-            <p>
-              We proxy revenue using the product of the number of
-              reviews a restaurant has received and the restaurant's
-              average meal price for two. We fit a number of features
-              including cuisine, location, and price tier on the
-              revenue proxy, using an ensemble model that first
-              applies ridge regression and then models the residuals
-              using a random forest.
-            </p>
-            <p>
-              Our model achieves <strong>80% precision</strong> and <strong>97% recall</strong> for
-              restaurants with above-median revenue proxy values, with
-              an R-squared of 0.91.
-            </p>
-          </div>
-          <div class="col-md-8 offset-md-2">
-            <figure class="figure text-center">
-              <img class="img-fluid img-thumbnail rounded" src="images/plot_predictions.png" alt="Predicted revenue." />
-              <figcaption class="figure-caption"><strong>Predicted revenue vs. proxy revenue.</strong></figcaption>
-            </figure>
-          </div>
-          <div class="col-md-10 offset-md-1">
-            <h3>Two-level prediction quality</h3>
-          </div>
-          <div class="col-md-8 offset-md-2">
-            <figure class="figure text-center">
-              <img class="img-fluid img-thumbnail rounded" src="images/confusion-matrix-2.svg" alt="Two-way confusion matrix" />
-              <figcaption class="figure-caption">
-                <strong>Prediction quality over two levels.</strong> Predictions
-                for above-median revenue proxy values yield 80%
-                precision and 97% recall.
-              </figcaption>
-            </figure>
-          </div>
-          <div class="col-md-10 offset-md-1">
-            <h3>Four-level prediction quality</h3>
-          </div>
-          <div class="col-md-8 offset-md-2">
-            <figure class="figure text-center">
-              <img class="img-fluid img-thumbnail rounded" src="images/confusion-matrix-4.svg" alt="Four-way confusion matrix" />
-              <figcaption class="figure-caption">
-                <strong>Prediction quality over four levels.</strong> Predictions
-                for top-quartile revenue proxy values yield 79%
-                precision and 93% recall.
               </figcaption>
             </figure>
           </div>
