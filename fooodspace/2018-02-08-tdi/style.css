@@ -1,18 +1,28 @@
 /* Move down content because we have a fixed navbar that is 3.5rem tall */
-body, .section {
+.section {
     padding-top: 3.5rem;
 }
 
-.jumbotron {
+.bg-dark-alpha {
+    background-color: rgba(52, 58, 64, 0.8);
+}
+
+#hero {
+    min-height: 100vh;
     background-image: url('images/restaurant.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    padding-top: 5rem;
 }
 
-.jumbotron .container {
-    padding: 1em;
-    background: rgba(255, 255, 255, 0.9);
+.jumbotron {
+    padding: 3rem;
+    padding-top: 5rem;
+    margin: 2rem auto;
+    width: 80%;
+    max-width: 65rem;
+    background: rgba(255, 255, 255, 0.88);
     border-radius: 10px;
 }
 
@@ -21,18 +31,22 @@ body, .section {
 }
 
 table.legend {
-    margin: 0 auto;
+    margin: 1em auto 0.5em;
+}
+
+table.legend td {
+    padding-bottom: 0.5em;
 }
 
 td.legend-color {
-    width: 25px;
+    width: 24px;
     overflow: hidden;
     display: inline-block;
     white-space: nowrap;
 }
 
 td.legend-text {
-    width: 120px;
+    width: 100px;
     overflow: hidden;
     display: inline-block;
     white-space: nowrap;
@@ -44,13 +58,32 @@ td.legend-text {
 }
 
 .legend-text {
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
 iframe {
     display: block;
     border: 0;
     margin: 0 auto;
-    width: 100%;
-    height: 1100px;
+    width: 800px;
+    height: 1050px;
+}
+
+#restaurant-data {
+  background-size: cover;
+  background-image: url('images/pexels-375889.jpg');
+}
+
+.bg-overlay {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+@media (min-width: 992px) {
+  #restaurant-data__text {
+    padding-top: 5rem;
+  }
+}
+
+#restaurant-data__text > p.lead {
+  font-size: 2rem;
 }

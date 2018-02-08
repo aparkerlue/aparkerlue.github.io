@@ -20,8 +20,7 @@
   </head>
   <body>
 
-    <!-- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"> -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-alpha">
       <a class="navbar-brand" href="#">Foood Space</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -55,115 +54,94 @@
 
     <main role="main">
 
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <div class="container">
-          <h1 class="display-3">Foood Space</h1>
-          <p>Using open data to identify the drivers of success in New York City restaurants.</p>
-        </div>
-      </div>
-
-      <div class="container">
-
-        <div class="row">
-          <div class="col-md-4">
-            <h2>Informing restaurant business strategy</h2>
-            <p>
-              Opening a restaurant in New York City involves making a
-              number of choices that directly influence the chance of
-              success: cuisine, location, menu price, and online
-              presence among others.
-            </p>
-            <p>We utilize various <a href="https://www.yelp.com/">sources</a> of <a href="https://www.zomato.com/">open</a>
-              <a href="http://www.nyc.gov/health">data</a> to predict
-              the impact these choices have on restaurant revenue.
-            </p>
-            <p><a class="btn btn-secondary" href="#restaurant-data" role="button">NYC restaurant data &raquo;</a></p>
-          </div>
-          <div class="col-md-4">
-            <h2>Data-driven insights</h2>
-            <p>
-              Predicting restaurant success using data on existing NYC
-              restaurants yields actionable insights for restaurant
-              owners and entrepreneurs:
-            </p>
-            <ul>
-              <li><a href="#rating-value">Star rating value</a> changes dramatically after three
-                stars</li>
-              <li>The impact of <a href="#price-pivot">menu price</a> varies with cuisine</li>
-              <li><a href="#avenue-premium">Street locations</a> could be more valuable than avenues</li>
-            </ul>
-            <p><a class="btn btn-secondary" href="#rating-value" role="button">Insights &raquo;</a></p>
-          </div>
-          <div class="col-md-4">
-            <h2>Tools for restaurateurs</h2>
-            <p>
-              We develop an estimate for revenue and fit the data to
-              an <a href="#model">ensemble model</a> that incorporates ridge
-              regression and random forests to inform our predictions.
-              To help restaurateurs zero in on the right combination
-              of characteristics for their establishment, we provide a
-              <a href="#restaurant-utility">recommender system-based utility</a>.
-            </p>
-            <p><a class="btn btn-secondary" href="#model" role="button">Model + utility &raquo;</a></p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-12">
-            <h2 class="section" id="restaurant-data">NYC restaurant data</h2>
-            <p>We take location and attribute data for over 7,900 New York City restaurants.</p>
-            <div class="bk-root">
-              <div class="bk-plotdiv" id="8043204f-8bed-4da2-882d-c8d2f95f5e56"></div>
+      <div class="container-fluid">
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="row" id="hero">
+          <div class="col">
+            <div class="jumbotron">
+              <h1 class="display-2">Foood Space</h1>
+              <p class="lead">Data-driven business strategy for restaurants in NYC.</p>
+              <hr class="mb-5">
+              <div class="row">
+                <div class="col-md-6 col-lg-6">
+                  <h2>Tools for Restaurateurs</h2>
+                  <p>
+                    The restaurant business is fraught with tough decisions. Foood Space analyzes multiple sources of open data so you can <strong>find out where the profit is</strong>:
+                  </p>
+                  <ul>
+                    <li><strong>Upscale French</strong>, or <strong>casual American?</strong></li>
+                    <li>A location on <strong>a street</strong>, or <strong>an avenue?</strong></li>
+                    <li>A <strong>one-star</strong> Yelp rating, or <strong>three-star?</strong></li>
+                  </ul>
+                  <p>
+                    <em>(Hint: It's not always what you think.)</em>
+                  </p>
+                  <p><a class="btn btn-success" href="#restaurant-data" role="button">Learn More &raquo;</a></p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-8 offset-md-2">
-            <table class="legend">
-              <tr>
-                <td class="legend-color"><span style="background-color: #393b79"></span></td><td class="legend-text">Italian</td>
-                <td class="legend-color"><span style="background-color: #5254a3"></span></td><td class="legend-text">American (New)</td>
-                <td class="legend-color"><span style="background-color: #6b6ecf"></span></td><td class="legend-text">American (Trad.)</td>
-                <td class="legend-color"><span style="background-color: #9c9ede"></span></td><td class="legend-text">Japanese</td>
-              </tr>
-              <tr>
-                <td class="legend-color"><span style="background-color: #637939"></span></td><td class="legend-text">Mexican</td>
-                <td class="legend-color"><span style="background-color: #8ca252"></span></td><td class="legend-text">Chinese</td>
-                <td class="legend-color"><span style="background-color: #b5cf6b"></span></td><td class="legend-text">Mediterranean</td>
-                <td class="legend-color"><span style="background-color: #cedb9c"></span></td><td class="legend-text">French</td>
-              </tr>
-              <tr>
-                <td class="legend-color"><span style="background-color: #8c6d31"></span></td><td class="legend-text">Indian</td>
-                <td class="legend-color"><span style="background-color: #bd9e39"></span></td><td class="legend-text">Thai</td>
-                <td class="legend-color"><span style="background-color: #e7ba52"></span></td><td class="legend-text">Asian Fusion</td>
-                <td class="legend-color"><span style="background-color: #e7cb94"></span></td><td class="legend-text">Latin American</td>
-              </tr>
-              <tr>
-                <td class="legend-color"><span style="background-color: #843c39"></span></td><td class="legend-text">Korean</td>
-                <td class="legend-color"><span style="background-color: #ad494a"></span></td><td class="legend-text">Middle Eastern</td>
-                <td class="legend-color"><span style="background-color: #d6616b"></span></td><td class="legend-text">Spanish</td>
-                <td class="legend-color"><span style="background-color: #e7969c"></span></td><td class="legend-text">Barbeque</td>
-              </tr>
-            </table>
-            <figcaption class="figure-caption">
-              <strong>NYC restaurant data.</strong> This map plots a
-              sample of the data set. Each circle represents a
-              restaurant and is colored according to the primary type
-              of food served. The size of the circle corresponds to
-              the value of the restaurant's revenue proxy.
-            </figcaption>
+
+        <div class="row" id="restaurant-data">
+          <div class="container-fluid bg-overlay section">
+            <div class="container">
+              <div class="row my-5">
+                <div class="col-lg-5 text-right" id="restaurant-data__text">
+                  <p class="lead">Harness data from</p>
+                  <p class="display-4">6,000+ Restaurants</p>
+                  <p class="lead">throughout NYC.</p>
+                  <p>Your choices (of cuisine, location, pricing, online presence, and more) have a direct impact on your chance of success.</p>
+                  <p>Are you confident you're making the right ones?</p>
+                </div>
+                <div class="col-lg-7" id="restaurant-data__map">
+                  <div class="bk-root">
+                    <div class="bk-plotdiv" id="8043204f-8bed-4da2-882d-c8d2f95f5e56"></div>
+                    <table class="legend">
+                      <tr>
+                        <td class="legend-color"><span style="background-color: #393b79"></span></td><td class="legend-text">Italian</td>
+                        <td class="legend-color"><span style="background-color: #5254a3"></span></td><td class="legend-text">American (New)</td>
+                        <td class="legend-color"><span style="background-color: #6b6ecf"></span></td><td class="legend-text">American (Trad.)</td>
+                        <td class="legend-color"><span style="background-color: #9c9ede"></span></td><td class="legend-text">Japanese</td>
+                      </tr>
+                      <tr>
+                        <td class="legend-color"><span style="background-color: #637939"></span></td><td class="legend-text">Mexican</td>
+                        <td class="legend-color"><span style="background-color: #8ca252"></span></td><td class="legend-text">Chinese</td>
+                        <td class="legend-color"><span style="background-color: #b5cf6b"></span></td><td class="legend-text">Mediterranean</td>
+                        <td class="legend-color"><span style="background-color: #cedb9c"></span></td><td class="legend-text">French</td>
+                      </tr>
+                      <tr>
+                        <td class="legend-color"><span style="background-color: #8c6d31"></span></td><td class="legend-text">Indian</td>
+                        <td class="legend-color"><span style="background-color: #bd9e39"></span></td><td class="legend-text">Thai</td>
+                        <td class="legend-color"><span style="background-color: #e7ba52"></span></td><td class="legend-text">Asian Fusion</td>
+                        <td class="legend-color"><span style="background-color: #e7cb94"></span></td><td class="legend-text">Latin American</td>
+                      </tr>
+                      <tr>
+                        <td class="legend-color"><span style="background-color: #843c39"></span></td><td class="legend-text">Korean</td>
+                        <td class="legend-color"><span style="background-color: #ad494a"></span></td><td class="legend-text">Middle Eastern</td>
+                        <td class="legend-color"><span style="background-color: #d6616b"></span></td><td class="legend-text">Spanish</td>
+                        <td class="legend-color"><span style="background-color: #e7969c"></span></td><td class="legend-text">Barbeque</td>
+                      </tr>
+                    </table>
+                    <figcaption class="figure-caption">
+                      <strong>NYC restaurant data.</strong> This map plots a
+                      sample of the data set. Each circle represents a
+                      restaurant and is colored according to the primary type
+                      of food served. The size of the circle corresponds to
+                      the value of the restaurant's revenue proxy.
+                    </figcaption>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-10 offset-md-1">
             <h2 class="section" id="rating-value">Revenue-value of a rating star</h2>
             <p>While more stars in a review tend to suggest a superior dining experience, our revenue model suggests that the dollar-value of an additional star becomes meaningful only after three stars.</p>
           </div>
-        </div>
-
-        <div class="row">
           <div class="col-md-8 offset-md-2">
             <figure class="figure text-center">
               <img class="img-fluid img-thumbnail rounded" src="images/plot_star_rating.png" alt="Revenue-value of a rating star." />
@@ -174,10 +152,13 @@
               </figcaption>
             </figure>
           </div>
+          <div class="col-md-10 offset-md-1">
+            <hr class="mt-5" />
+          </div>
         </div>
 
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-10 offset-md-1">
             <h2 class="section" id="price-pivot">Pivoting on price</h2>
             <p>
               While sliding up the menu price scale generally
@@ -186,9 +167,6 @@
               cuisines served.
             </p>
           </div>
-        </div>
-
-        <div class="row">
           <div class="col-md-8 offset-md-2">
             <figure class="figure text-center">
               <img class="img-fluid img-thumbnail rounded" src="images/plot_culinary_pivot.png" alt="On- vs. off-avenue locations." />
@@ -199,10 +177,13 @@
               </figcaption>
             </figure>
           </div>
+          <div class="col-md-10 offset-md-1">
+            <hr class="mt-5" />
+          </div>
         </div>
 
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-10 offset-md-1">
             <h2 class="section" id="avenue-premium">On- vs. off-avenue locations</h2>
             <p>
               On-avenue restaurant locations provide exposure to
@@ -213,9 +194,6 @@
               neighborhoods.
             </p>
           </div>
-        </div>
-
-        <div class="row">
           <div class="col-md-8 offset-md-2">
             <figure class="figure text-center">
               <img class="img-fluid img-thumbnail rounded" src="images/plot_avenue_premium.png" alt="On- vs. off-avenue locations." />
@@ -226,10 +204,13 @@
               </figcaption>
             </figure>
           </div>
+          <div class="col-md-10 offset-md-1">
+            <hr class="mt-5" />
+          </div>
         </div>
 
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-10 offset-md-1">
             <h2 class="section" id="model">Revenue model</h2>
             <p>
               We proxy revenue using the product of the number of
@@ -246,15 +227,15 @@
               an R-squared of 0.91.
             </p>
           </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-12">
-            <h3 class="section">Two-level prediction quality</h3>
+          <div class="col-md-8 offset-md-2">
+            <figure class="figure text-center">
+              <img class="img-fluid img-thumbnail rounded" src="images/plot_predictions.png" alt="Predicted revenue." />
+              <figcaption class="figure-caption"><strong>Predicted revenue vs. proxy revenue.</strong></figcaption>
+            </figure>
           </div>
-        </div>
-
-        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <h3>Two-level prediction quality</h3>
+          </div>
           <div class="col-md-8 offset-md-2">
             <figure class="figure text-center">
               <img class="img-fluid img-thumbnail rounded" src="images/confusion-matrix-2.svg" alt="Two-way confusion matrix" />
@@ -265,28 +246,9 @@
               </figcaption>
             </figure>
           </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6 offset-md-3">
-            <pre>
-             precision    recall  f1-score   support
-
-         H1       0.97      0.76      0.85      3966
-         H2       0.80      0.97      0.88      3965
-
-avg / total       0.89      0.87      0.87      7931
-            </pre>
+          <div class="col-md-10 offset-md-1">
+            <h3>Four-level prediction quality</h3>
           </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-12">
-            <h3 class="section">Four-level prediction quality</h3>
-          </div>
-        </div>
-
-        <div class="row">
           <div class="col-md-8 offset-md-2">
             <figure class="figure text-center">
               <img class="img-fluid img-thumbnail rounded" src="images/confusion-matrix-4.svg" alt="Four-way confusion matrix" />
@@ -297,40 +259,13 @@ avg / total       0.89      0.87      0.87      7931
               </figcaption>
             </figure>
           </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6 offset-md-3">
-            <pre>
-             precision    recall  f1-score   support
-
-         Q1       0.89      0.53      0.67      1988
-         Q2       0.56      0.55      0.55      1978
-         Q3       0.60      0.74      0.66      1984
-         Q4       0.79      0.93      0.86      1981
-
-avg / total       0.71      0.69      0.68      7931
-            </pre>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-12">
-            <h3 class="section">Model predictions vs. observations</h3>
+          <div class="col-md-10 offset-md-1">
+            <hr class="mt-5" />
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-10 offset-md-1">
-            <figure class="figure text-center">
-              <img class="img-fluid img-thumbnail rounded" src="images/plot_predictions.png" alt="Predicted revenue." />
-              <figcaption class="figure-caption"><strong>Predicted revenue vs. proxy revenue.</strong></figcaption>
-            </figure>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-12">
             <h2 class="section" id="restaurant-utility">Restaurant recommender system</h2>
             <p>A higher <code>Fit</code> is better.</p>
             <iframe src="https://fooodspace.herokuapp.com/"></iframe>
