@@ -1,0 +1,31 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 4em 10em;
+}
+
+.docinfo {
+    text-align: center;
+    font-style: italic;
+}
+
+.abstract {
+    margin: 0 15%;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+thead {
+    border-bottom: 1px solid black;
+}
+
+th, td {
+    padding: 0.1em 0.5em;
+}
+
+.output_area {
+    display: flex;
+    justify-content: center;
+}
